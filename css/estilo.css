@@ -1,0 +1,259 @@
+@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
+
+body {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.banner {
+  margin-bottom: 25px;
+}
+
+.icon-bar-top {
+  padding-right: 5px;
+}
+
+.titulo-todos {
+  border-bottom: 1px solid #ababab;
+}
+
+.titulo-fique {
+  color: #b22d30;
+  text-transform: uppercase;
+}
+
+.ver-todos {
+  float: right;
+  display: block;
+  margin-top: 10px
+}
+
+.ver-todos a {
+  float: right;
+  color: #a0a0a0;
+}
+.ver-todos a:hover {
+  float: right;
+  color: #b22d30;
+  text-decoration: none;
+}
+
+.img-home {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+/*.titulo-noticia {
+  text-align: center;
+}*/
+
+.titulo-noticia-home {
+  color: #b22d30;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.titulo-noticia-home:hover {
+  color: #333333;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+.previa-home {
+  text-align: justify;
+  color: #656565;
+}
+
+.btn-pesquisa {
+  background: #b22d30;
+  border-radius: 0px !important;
+}
+
+.anuncio {
+  margin-top: 20px;
+}
+
+.conteudo-principal {
+  margin-bottom: 20px;
+}
+
+.viagem {
+  margin-top: 15px;
+}
+
+.link-esquerda {
+  margin-left: 20px;
+}
+
+.links-tcc a {
+  text-transform: uppercase;
+  color: #333333;
+  text-align: center;
+}
+
+.links-tcc a:hover {
+  text-transform: uppercase;
+  text-align: center;
+  color: #b22d30;
+  text-decoration: none !important;
+}
+
+.pre-footer {
+  background: url(../images/faixa.jpg);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #fff;
+}
+
+.informa {
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.btn-informa {
+  background: #66b38c;
+  color: #fff;
+  border-radius: 0px !important;
+  margin-top: 25px;
+}
+
+/********************MENU*********************/
+
+
+.navbar-nav > li > a {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.navbar-brand {
+  height: auto !important;
+}
+
+.navbar {
+  margin-bottom: 0px !important;
+  border: 0px !important;
+  min-height: 10px !important;
+}
+
+.navbar-top {
+  color: #fff !important;
+	background: #333333 !important;
+	margin-bottom: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.navbar-top > li > a {
+  color: #fff !important;
+  font-size: 12px !important;
+}
+
+.navbar-top .navbar-nav > li > a:hover {
+	color: #ab2d30 !important;
+	background: transparent !important;
+	margin-bottom: 0;
+  font-size: 12px !important;
+}
+
+.navbar-header {
+  padding-top: 10px;
+}
+
+.navbar-curso {
+  color: #000 !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.navbar-curso > li > a {
+  color: #5d5d5d !important;
+  font-size: 14px !important;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navbar-curso > li > a:hover {
+  color: #ab2d30 !important;
+  background: transparent !important;
+  text-transform: uppercase;
+}
+
+.navbar-principal {
+  color: #000 !important;
+  background: #b22d30;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar-principal > li {
+  border-right: 1px solid #c73c3f;
+}
+
+.navbar-principal > li:last-child {
+  border-right: 1px solid transparent;
+}
+
+.navbar-principal > li > a {
+  color: #fff !important;
+  text-transform: uppercase;
+
+}
+
+
+.navbar-principal > li > a:hover {
+  color: #333333 !important;
+  background: transparent !important;
+  text-transform: uppercase;
+}
+
+/*******************************************/
+
+/***************FOOTER**********************/
+
+footer {
+  background: #333333;
+  color: #a7a7a7;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.titulos-rodape {
+  color: #fff;
+  margin-top: 15px;
+  display: block;
+  text-transform: uppercase;
+}
+
+.end-footer {
+  margin-top: 15px;
+}
+
+.icon-footer {
+  padding-right: 5px;
+}
+
+.alinha-end {
+  padding-left: 25px;
+}
+
+.sub-menu-footer {
+  color: #a7a7a7;
+  display: block;
+}
+
+.sub-menu-footer:hover {
+  color: #b22d30;
+  display: block;
+  text-decoration: none;
+}
+
+.logo-footer {
+  margin-top: 20px
+}
+
+/*******************************************/
