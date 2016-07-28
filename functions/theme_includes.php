@@ -4,7 +4,7 @@ if(!is_admin()){
 	wp_enqueue_style( 'Estilo', get_template_directory_uri().'/css/estilo.css', array(),'1.0.0', 'screen' );
 	wp_enqueue_style( 'Bootstrap', get_template_directory_uri().'/css/bootstrap.css', array(),'3.3.6', 'screen' );
 	wp_enqueue_style( 'Font Awesome', get_template_directory_uri().'/css/font-awesome.css', array(),'4.5.0', 'screen' );
-	wp_enqueue_style( 'yamm', get_template_directory_uri().'/css/yamm.css', array(),'1.0.0', 'screen' );
+	wp_enqueue_style( 'hover', get_template_directory_uri().'/css/hover.css', array(),'2.0.2', 'screen' );
 	wp_enqueue_style( 'slick', get_template_directory_uri().'/css/slick.css', array(),'1.5.9', 'screen' );
 	wp_enqueue_style( 'slick-theme', get_template_directory_uri().'/css/slick-theme.css', array(),'1.5.9', 'screen' );
 	wp_enqueue_style( 'style', get_template_directory_uri().'/style.css', array(),'1.0.0', 'screen' );

@@ -1,61 +1,96 @@
-<footer>
+<section class="pre-footer">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <img src="images/logo-baixo.png" alt="" class="img-responsive logo-footer" />
+        <p class="informa">
+          Informativo Online:
+        </p>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <form>
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <form>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-informa">Cadastrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="<?php echo get_template_directory_uri() ?>/images/logo-baixo.png" alt="" class="img-responsive logo-footer" />
         <div class="end-footer">
           <p>
-            <img src="images/icon-fone.png" alt="" class="icon-footer"/> (31) 3979-7960
+            <img src="<?php echo get_template_directory_uri() ?>/images/icon-fone.png" alt="" class="icon-footer"/> (31) 3979-7960
           </p>
           <p>
-            <img src="images/icon-localizacao2.png" alt=""  class="icon-footer"/> Av. Dois, 909-Casa A - Jardim Vitória<br>
+            <img src="<?php echo get_template_directory_uri() ?>/images/icon-localizacao2.png" alt=""  class="icon-footer"/> Av. Dois, 909-Casa A - Jardim Vitória<br>
             <span class="alinha-end">Belo Horizonte/MG | Cep: 31975-334</span>
           </p>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9">
         <div class="row">
-          <div class="col-md-3">
-            <span class="titulos-rodape">
-              Pós-Graduação
-            </span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Acupuntura</a></small></span>
-             <span><small><a href="#" class="sub-menu-footer">&dash; Acupuntura Veterinária</a></small></span>
-             <span><small><a href="#" class="sub-menu-footer">&dash; Biotecnologia</a></small></span>
-             <span><small><a href="#" class="sub-menu-footer">&dash; Exercícios Terapêuticos Chineses</a></small></span>
-             <span><small><a href="#" class="sub-menu-footer">&dash; Farmacologia e Clínica Chinesa</a></small></span>
-             <span><small><a href="#" class="sub-menu-footer">&dash; Massagem e Manipulação Chinesa</a></small></span>
-             <span><small><a href="#" class="sub-menu-footer">&dash; Medicina Vet. Tradicional Chinesa</a></small></span>
-          </div>
-          <div class="col-md-3">
-            <span class="titulos-rodape">
-              Graduação
-            </span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Ciências Biológicas</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Gestão Ambiental</a></small></span>
-          </div>
-          <div class="col-md-3">
-            <span class="titulos-rodape">
-              Técnicos
-            </span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Acupuntura</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Estética e Cosmetologia</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Massoterapia</a></small></span>
-          </div>
-          <div class="col-md-3">
-            <span class="titulos-rodape">
-              Extensões e <br>Cursos Livres
-            </span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Acupuntura</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Ciências Biológicas</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Gestão Ambiental</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Estética e Cosmetologia</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Farmácia</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Fitoterapia e Florais</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Massagens</a></small></span>
-            <span><small><a href="#" class="sub-menu-footer">&dash; Outros Cursos</a></small></span>
-          </div>
-        </div>
+          <?php
+          $termoFooter = get_terms( array ('taxonomy' => 'categoria' ));
+          foreach ($termoFooter as $term) {
+          ?>
+            <div class="col-md-3">
+              <span class="titulos-rodape">
+                <?php echo $term->name ?>
+              </span>
+              <?php
+              $arg = array(
+                'post_type' => 'cursos',
+                'tax_query' => array(
+                  array(
+                    'taxonomy' => 'categoria',
+                    'terms' => $term->term_id,
+                    'field' => 'term_id'
+                  ),
+                ),
+              );
+
+              $menu_lateral = new wp_query($arg);
+              if($menu_lateral->have_posts()):
+                while($menu_lateral->have_posts()): $menu_lateral->the_post();
+                  $titulo_menu = get_the_title();
+                  if ($titulo_corrente == $titulo_menu) {
+                    $activate = "activate";
+                  } else {
+                    $activate = "";
+                  }
+                  echo "<span><small>";
+                  ?>
+                    <a href="<?php the_permalink() ?>" class="sub-menu-footer">&dash; <?php the_title(); ?></a>
+                  <?php
+                  echo "</small></span>";
+                endwhile;
+              endif;
+              ?>
+            </div>
+          <?php
+          }
+          ?>
+        </div>  
         <div class="row">
           <div class="col-md-3">
             <span class="titulos-rodape">

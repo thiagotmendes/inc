@@ -13,3 +13,81 @@ Text Domain: 4media agência digital
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+
+.navbar-toggle .icon-bar{
+  background: #fff;
+  color: #fff;
+}
+
+.btn-meinc .icon-bar{
+  background: #000;
+  color: #000;
+}
+
+.img-noticia{
+  height: 255px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.noticias-home{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.navbar{
+  border-radius: 0px !important;
+}
+
+.titulo-interno{
+  background-color: #9d9696;
+  padding: 80px 0;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.page-interno{
+  min-height: 600px;
+}
+
+.conteudo-interno{
+  padding: 30px 0;
+}
+
+.titulo-menu-interno{
+  margin: 0 0 15px;
+  font-weight: 400;
+}
+
+.menu-lateral{
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+.menu-lateral li a{
+  display: block;
+  color: #7f7f7f;
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.menu-lateral li a:hover{
+  text-decoration: none;
+}
+
+.menu-lateral .activate a{
+  border-bottom: #b22d30 solid 2px;
+}
+
+.menu-lateral .hvr-underline-from-left:before{
+  background: #b22d30 !important;
+}
+
+.reserva-item{
+  margin-bottom: 10px;
+  border-bottom: #fbfbfb solid 1px;
+  padding: 0 0 15px;
+}

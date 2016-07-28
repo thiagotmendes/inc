@@ -46,6 +46,7 @@ register_taxonomy("categoria", array("cursos"),
 	)
 );
 
+/*
 add_action('init', 'depoimentos_register');
 function depoimentos_register() {
 	 $labels = array(
@@ -79,4 +80,4 @@ function depoimentos_register() {
 			'rewrite' => array('slug' => 'depoimento')
 	  );
 	register_post_type('depoimento',$args);
-}
+}*/

@@ -6,18 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!--CSS-->
-    <link rel="stylesheet" href="css/estilo.css" media="screen">
-    <link rel="stylesheet" href="css/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.css" media="screen">
-
-    <!--JS-->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-
     <?php wp_head() ?>
 
-    <title>Incisa Imam</title>
+    <title>
+      <?php
+	      if ( is_single() ) {
+	        bloginfo('name'); echo " | "; single_post_title();
+	      }elseif ( is_home() || is_front_page() ) {
+	        bloginfo('name'); echo ' | ';
+	        bloginfo('description');
+	      }elseif ( is_page() ) {
+	        single_post_title('');
+	      }elseif ( is_search() ) {
+	        bloginfo('name');
+	        echo ' | Search results for ' . wp_specialchars($s);
+	      }elseif ( is_404() ) {
+	        bloginfo('name');
+	        print ' | Erro 404';
+	      }else {
+	        bloginfo('name');
+	        wp_title('|');
+	      }
+      ?>
+    </title>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,12 +55,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-top">
-                <li class="active"><a href="#"><img src="images/icon-boleto.png" alt=""  class="icon-bar-top"/> 2&ordf; Via de Boleto <span class="sr-only">(current)</span></a></li>
-                <li><a href="#"><img src="images/icon-trabalhe.png" alt="" class="icon-bar-top"/> Trabalhe Conosco</a></li>
-                <li><a href="#"><img src="images/icon-localizacao.png" alt="" class="icon-bar-top"/> Localização</a></li>
+                <li class="active"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-boleto.png" alt=""  class="icon-bar-top"/> 2&ordf; Via de Boleto <span class="sr-only">(current)</span></a></li>
+                <li><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-trabalhe.png" alt="" class="icon-bar-top"/> Trabalhe Conosco</a></li>
+                <li><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-localizacao.png" alt="" class="icon-bar-top"/> Localização</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right navbar-top">
-                <li><a href="#"><img src="images/icon-restrito.png" alt="" class="icon-bar-top"/> Alunos</a></li>
+                <li><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-restrito.png" alt="" class="icon-bar-top"/> Alunos</a></li>
                 <li><a href="#">Professores</a></li>
                 <li><a href="#">Intranet</a></li>
                 <li><a href="#">Parceiros</a></li>
@@ -64,22 +75,35 @@
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <button type="button" class="navbar-toggle collapsed btn-meinc" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><img src="images/logo.png" alt="" /></a>
+              <a class="navbar-brand" href="#"><img src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="" /></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
               <ul class="nav navbar-nav navbar-right navbar-curso">
-                <li class="active"><a href="#">Pós-Graduação <img src="images/setinha.png" alt="" /></a></li>
-                <li><a href="#">Graduação <img src="images/setinha.png" alt="" /></a></li>
-                <li><a href="#">Técnicos <img src="images/setinha.png" alt="" /></a></li>
-                <li><a href="#">Extensão e Cursos Livres <img src="images/setinha.png" alt="" /></a></li>
+              <?php
+              $term_tilte = get_terms('categoria', array(
+                'orderby'    => 'order',
+                'order'      => 'ASC',
+              ));
+
+              foreach ( $term_tilte as $curso ) {
+                $link = get_term_link( $curso->term_id, 'categoria' )
+              ?>
+                <li class="active"><a href="<?php echo $link ?>"> <?php echo $curso->name ?> <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" /></a></li>
+              <?php
+              }
+              ?>
+                <!--<li class="active"><a href="#">Pós-Graduação <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" /></a></li>
+                <li><a href="#">Graduação <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" /></a></li>
+                <li><a href="#">Técnicos <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" /></a></li>
+                <li><a href="#">Extensão e Cursos Livres <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" /></a></li>-->
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-->
@@ -90,7 +114,7 @@
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -99,17 +123,15 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-principal">
-                <li><a href="#">O Incisa Imam</a></li>
-                <li><a href="#">Como Ingressar</a></li>
-                <li><a href="#">Ambulatórios e Estágios</a></li>
-                <li><a href="#">Intercâmbio</a></li>
-                <li><a href="#">Editais</a></li>
-                <li><a href="#">Calendário</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Fale Conosco</a></li>
-              </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
+              <?php
+    		    	$args = array(
+    		    		'menu' => 'principal',
+    		    		'menu_class' => 'nav navbar-nav navbar-principal',
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker()
+    		    	);
+    		    	wp_nav_menu( $args ); ?>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-->
         </nav>
