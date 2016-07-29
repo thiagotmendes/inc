@@ -15,6 +15,7 @@
                   $id = get_the_id();
                   $termo_id = $termoCorrent[0]->term_id;
                   $titulo_corrente = get_the_title();
+
                   $pagina_anterior = get_post_ancestors($id);
 
                   if(!empty($pagina_anterior)){
@@ -25,30 +26,65 @@
 
                   echo "<h3 class='titulo-menu-interno'>". $termoCorrent[0]->name . "</h3>";
 
-                  $arg = array(
-                    'post_type' => 'cursos',
-                    'tax_query' => array(
-                      array(
-                        'taxonomy' => 'categoria',
-                        'terms' => $termo_id,
-                        'field' => 'term_id'
+                  if (!empty($pagina_anterior)) {
+                    $arg = array(
+                      'post_type' => 'cursos',                  
+                      'tax_query' => array(
+                        array(
+                          'taxonomy' => 'categoria',
+                          'terms' => $termo_id,
+                          'field' => 'term_id'
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else{
+                    $arg = array(
+                      'post_type' => 'cursos',
+                      'tax_query' => array(
+                        array(
+                          'taxonomy' => 'categoria',
+                          'terms' => $termo_id,
+                          'field' => 'term_id'
+                        ),
+                      ),
+                    );
+                  }
+
+                  var_dump($arg);
 
                   $menu_lateral = new wp_query($arg);
                   if($menu_lateral->have_posts()):
                     echo "<ul class='menu-lateral'>";
                       while($menu_lateral->have_posts()): $menu_lateral->the_post();
+                        $idMenuSuperior = get_the_id();
                         $titulo_menu = get_the_title();
                         if ($titulo_corrente == $titulo_menu) {
-                          $activate = "activate";
+                          //$activate = "activate";
                         } else {
                           $activate = "";
                         }
                         echo "<li class='$activate'>";
                         ?>
                           <a href="<?php the_permalink() ?>" class="hvr-underline-from-left"><?php the_title(); ?></a>
+                          <?php
+                          /********** Sub menu ********************/
+                          $argSubmenu = array(
+                            'post_type'   => 'cursos',
+                            'post_parent' => $idMenuSuperior
+                          );
+
+                          $subMenu = new wp_query($argSubmenu);
+                          if ($subMenu->have_posts()):
+                            echo "<ul>";
+                            while($subMenu->have_posts()): $subMenu->the_post();
+                          ?>
+                              <li> <a href="<?php the_permalink() ?>"> <?php the_title(); ?> </a> </li>
+                          <?php
+                            endwhile;
+                            echo "</ul>";
+                          endif;
+                          /*********** final do sub menu  ***********************/
+                          ?>
                         <?php
                         echo "</li>";
                       endwhile;
