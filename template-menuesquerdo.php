@@ -2,8 +2,8 @@
 <?php get_header() ?>
   <main class="page-interno">
     <section>
-
-        <section class="titulo-interno">
+        <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+        <section class="titulo-interno" style="background-image:url('<?php echo $url ?>')"> 
           <div class="container">
             <h1><?php the_title() ?></h1>
           </div>
@@ -30,7 +30,7 @@
                     'post_parent'     => $idPagina
                   );
 
-                  echo "<h3 class='titulo-menu-interno'>". get_post_field('post_title', $idPagina) . "</h3>"; 
+                  echo "<h3 class='titulo-menu-interno'>". get_post_field('post_title', $idPagina) . "</h3>";
 
                   $menu_lateral = new wp_query($arg);
                   if($menu_lateral->have_posts()):

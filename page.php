@@ -3,7 +3,8 @@
     <section>
       <?php if (have_posts()): ?>
         <?php while(have_posts()): the_post() ?>
-        <section class="titulo-interno">
+          <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+        <section class="titulo-interno" style="background-image:url('<?php echo $url ?>')">    
           <div class="container">
             <h1><?php the_title() ?></h1>
           </div>

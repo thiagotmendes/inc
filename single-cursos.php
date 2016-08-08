@@ -1,10 +1,20 @@
 <?php get_header() ?>
   <main class="page-interno">
     <section>
-        <section class="titulo-interno">
+      <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+      <section class="titulo-interno" style="background-image:url('<?php echo $url ?>')"> 
           <div class="container">
+            <?php
+            $post = get_post( $pagina_anterior[0] );
+            ?>
             <?php $termoCorrent = get_the_terms($idPagina, 'categoria'); ?>
-            <h1><?php echo $termoCorrent[0]->name ?></h1>
+            <h1><?php
+            if(!empty($post)):
+              echo $post->post_title;
+            else:
+              echo $termoCorrent[0]->name;
+            endif;
+             ?></h1>
           </div>
         </section>
         <section class="conteudo-interno">
@@ -24,20 +34,8 @@
                     $idPagina = $id;
                   }
 
-                  echo "<h3 class='titulo-menu-interno'>". $termoCorrent[0]->name . "</h3>";
-
-                  if (!empty($pagina_anterior)) {
-                    $arg = array(
-                      'post_type' => 'cursos',                  
-                      'tax_query' => array(
-                        array(
-                          'taxonomy' => 'categoria',
-                          'terms' => $termo_id,
-                          'field' => 'term_id'
-                        ),
-                      ),
-                    );
-                  } else{
+                  if(empty($pagina_anterior)):
+                    echo "<h3 class='titulo-menu-interno'>". $termoCorrent[0]->name . "</h3>";
                     $arg = array(
                       'post_type' => 'cursos',
                       'tax_query' => array(
@@ -48,10 +46,15 @@
                         ),
                       ),
                     );
-                  }
+                  else:
+                    $post = get_post( $pagina_anterior[0] );
 
-                  var_dump($arg);
-
+                    echo "<h3 class='titulo-menu-interno'>". $post->post_title . "</h3>";
+                    $arg = array(
+                      'post_type' => 'cursos',
+                      'post_parent' => $pagina_anterior[0]
+                    );
+                  endif;
                   $menu_lateral = new wp_query($arg);
                   if($menu_lateral->have_posts()):
                     echo "<ul class='menu-lateral'>";
@@ -72,7 +75,6 @@
                             'post_type'   => 'cursos',
                             'post_parent' => $idMenuSuperior
                           );
-
                           $subMenu = new wp_query($argSubmenu);
                           if ($subMenu->have_posts()):
                             echo "<ul>";
@@ -84,8 +86,6 @@
                             echo "</ul>";
                           endif;
                           /*********** final do sub menu  ***********************/
-                          ?>
-                        <?php
                         echo "</li>";
                       endwhile;
                     echo "</ul>";
@@ -95,6 +95,7 @@
                   ?>
               </div>
               <div class="col-md-9">
+
                 <?php if (have_posts()): ?>
                   <?php while(have_posts()): the_post() ?>
                     <div class="row reserva-item">
@@ -115,6 +116,7 @@
                     <?php the_content() ?>
                   <?php endwhile; ?>
                 <?php endif; ?>
+
               </div>
             </div>
           </div>

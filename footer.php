@@ -8,7 +8,7 @@
       </div>
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-5">
             <form>
               <div class="form-group">
                 <label>Nome</label>
@@ -16,7 +16,7 @@
               </div>
             </form>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <form>
               <div class="form-group">
                 <label>Email</label>
@@ -24,7 +24,7 @@
               </div>
             </form>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
             <button type="submit" class="btn btn-informa">Cadastrar</button>
           </div>
         </div>
@@ -38,7 +38,7 @@
       <div class="col-md-3">
         <img src="<?php echo get_template_directory_uri() ?>/images/logo-baixo.png" alt="" class="img-responsive logo-footer" />
         <div class="end-footer">
-          <p>
+          <p class="tel-footer">
             <img src="<?php echo get_template_directory_uri() ?>/images/icon-fone.png" alt="" class="icon-footer"/> (31) 3979-7960
           </p>
           <p>
@@ -90,7 +90,7 @@
           <?php
           }
           ?>
-        </div>  
+        </div>
         <div class="row">
           <div class="col-md-3">
             <span class="titulos-rodape">

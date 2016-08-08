@@ -56,9 +56,57 @@ Use it to make something cool, have fun, and share what you've learned with othe
   padding: 30px 0;
 }
 
+.seta-menu{
+  margin-left: 8px;
+  margin-top: -4px;
+}
+
 .titulo-menu-interno{
   margin: 0 0 15px;
   font-weight: 400;
+}
+
+.panel-bos{
+  margin-top: 20px;
+}
+
+.panel-heading{
+  background-color: #b22d30;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.info-adicional{
+  border-bottom: #7f7f7f solid 1px;
+  padding: 7px 5px;
+  margin-bottom: 15px;
+}
+
+.conteudo-blog{
+  padding: 30px 15px
+}
+
+.img-noticia-blog{
+  height: 300px;
+  overflow: hidden;
+}
+
+.img-noticia-blog img{
+  width: 100%
+}
+
+.btn-continue{
+  background-color: #b22d30;
+  color: #fff;
+}
+
+.btn-continue:hover{
+  background-color: #7d1719;
+  color: #fff;
+}
+
+.post{
+  margin-bottom: 20px;
 }
 
 .menu-lateral{
@@ -90,4 +138,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
   margin-bottom: 10px;
   border-bottom: #fbfbfb solid 1px;
   padding: 0 0 15px;
+}
+
+.navbar-top li{
+  border-right: #474646 solid 1px;
+}
+
+.navbar-top li:last-child{
+  border-right: transparent solid 1px;
 }

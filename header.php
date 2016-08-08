@@ -55,16 +55,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-top">
-                <li class="active"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-boleto.png" alt=""  class="icon-bar-top"/> 2&ordf; Via de Boleto <span class="sr-only">(current)</span></a></li>
-                <li><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-trabalhe.png" alt="" class="icon-bar-top"/> Trabalhe Conosco</a></li>
-                <li><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-localizacao.png" alt="" class="icon-bar-top"/> Localização</a></li>
+                <li class="active"><a href="http://www.incisaimam.com.br/boleto/"><img src="<?php echo get_template_directory_uri() ?>/images/icon-boleto.png" alt=""  class="icon-bar-top"/> 2&ordf; Via de Boleto <span class="sr-only">(current)</span></a></li>
+                <li><a href="<?php echo esc_url( home_url( 'trabalhe-conosco' ) ); ?>"><img src="<?php echo get_template_directory_uri() ?>/images/icon-trabalhe.png" alt="" class="icon-bar-top"/> Trabalhe Conosco</a></li>
+                <li><a href="<?php echo esc_url( home_url( 'localizacao' ) ); ?>"><img src="<?php echo get_template_directory_uri() ?>/images/icon-localizacao.png" alt="" class="icon-bar-top"/> Localização</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right navbar-top">
-                <li><a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/icon-restrito.png" alt="" class="icon-bar-top"/> Alunos</a></li>
-                <li><a href="#">Professores</a></li>
+                <li><a href="http://177.43.100.194/aula/aluno/login.php"><img src="<?php echo get_template_directory_uri() ?>/images/icon-restrito.png" alt="" class="icon-bar-top"/> Alunos</a></li>
+                <li><a href="http://177.43.100.194/aula/framework/config/php/login.php">Professores</a></li>
                 <li><a href="#">Intranet</a></li>
-                <li><a href="#">Parceiros</a></li>
-                <li><a href="#">Formulários</a></li>
+                <li><a href="<?php echo esc_url( home_url( 'parceiros' ) ); ?>">Parceiros</a></li>
+                <li><a href="http://www.incisaimam.com.br/formularios/">Formulários</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-->
@@ -81,7 +81,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><img src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="" /></a>
+              <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="" /></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -96,7 +96,12 @@
               foreach ( $term_tilte as $curso ) {
                 $link = get_term_link( $curso->term_id, 'categoria' )
               ?>
-                <li class="active"><a href="<?php echo $link ?>"> <?php echo $curso->name ?> <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" /></a></li>
+                <li class="active">
+                  <a href="<?php echo $link ?>">
+                    <?php echo $curso->name ?>
+                    <img src="<?php echo get_template_directory_uri() ?>/images/setinha.png" alt="" class="seta-menu" />
+                  </a>
+                </li>
               <?php
               }
               ?>

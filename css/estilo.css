@@ -203,13 +203,14 @@ body {
 .navbar-principal > li > a {
   color: #fff !important;
   text-transform: uppercase;
-
+  transition-duration: 0.3s;
 }
 
-
-.navbar-principal > li > a:hover {
-  color: #333333 !important;
-  background: transparent !important;
+.navbar-principal > li > a:hover,
+.navbar-principal > li > a:focus,
+.navbar-principal > li.active > a {
+  color: #fff !important;
+  background: #c73c3f !important;
   text-transform: uppercase;
 }
 
@@ -232,7 +233,11 @@ footer {
 }
 
 .end-footer {
-  margin-top: 15px;
+  margin-top: 45px;
+}
+
+.tel-footer {
+  font-size: 20px;
 }
 
 .icon-footer {

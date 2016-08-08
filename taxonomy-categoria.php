@@ -47,11 +47,14 @@
                   ?>
               </div>
               <div class="col-md-9">
-                <?php if (have_posts()): ?>
-                  <?php while(have_posts()): the_post() ?>
-                    <?php the_content() ?>
-                  <?php endwhile; ?>
-                <?php endif; ?>
+                <div class="row">
+                  <?php
+                  $id = $termoCorrent[0]->name; 
+                  $post = get_post($id);
+                  $content = apply_filters('the_content', $post->post_content);
+                  echo $content;
+                  ?>
+                </div>
               </div>
             </div>
           </div>
